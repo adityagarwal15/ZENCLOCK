@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="landing1.css">
+</head>
+<body>
+
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+
+    <div class="container">
+
+        <svg class="gr1" xmlns="http://www.w3.org/2000/svg" width="904" height="576" viewBox="0 0 904 576" fill="url(#gradient)">
+      
+            <filter id="grain">
+              <feTurbulence type='fractalNoise'baseFrequency='0.6' stitchTiles='stitch' xresult="colorNoise" />
+              <feColorMatrix in="colorNoise" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
+              <feComposite operator="in" in2="SourceGraphic" result="monoNoise"/>
+              <feBlend in="SourceGraphic" in2="monoNoise" mode="hard-light" />
+             </filter>
+      
+          <linearGradient id="gradient">
+            <stop stop-color="var(--orange)" offset="30%" />
+          </linearGradient>
+        </svg>
+      
+        <svg class="gr2" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" fill="url(#gradient2)">
+        
+          <filter id="innershadow2">
+            <feFlood flood-color="rgb(255,255,255,0.1)"/>
+      
+            <feComposite operator="out" in2="SourceGraphic" />
+      
+            <feMorphology operator="dilate" radius="1"/>
+            <feGaussianBlur stdDeviation="15" />
+            <feOffset dx="-20" dy="0"/>
+      
+            <feComposite operator="atop" in2="SourceGraphic"/>
+          </filter>
+      
+          <linearGradient id="gradient2" gradientTransform="rotate(45)">
+            <stop stop-color="#FF5733" offset="0%" />
+            <stop stop-color="#C70039" offset="50%" />
+            <stop stop-color="#900C3F" offset="100%" />
+          </linearGradient>
+          
+      
+          <circle cx="300" cy="300" r="300" filter="url(#grain) url(#innershadow2)"/>
+        </svg>
+      
+      </div>
+      
+      <p class="text">ZENCLOCK</p>
+     
+<script src="landing1.js"></script>
+</body>
+</html>

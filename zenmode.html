@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenClock</title>
+  <link rel="stylesheet" href="zenmode.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css">
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+</head>
+<body>
+  <div id="zenclock-page">
+    <header id="zenclock-text">
+      <a href="index.html">ZENCLOCK</a>
+    </header>
+
+    <main id="main-content">
+      <div id="flipclock"></div>
+      <div id="quote"></div>
+    </main>
+
+    <footer id="footer">
+      <!-- Spotify icon -->
+      <div id="spotify-icon">
+        <img src="spotify-removebg-preview.png" alt="Spotify">
+      </div>
+
+      <button id="play-btn">Play</button>
+<button id="pause-btn">Pause</button>
+
+      
+
+      <!-- Fullscreen button -->
+      <button id="fullscreen-btn" aria-label="Fullscreen">
+        <img src="FULL-SCREEN.png" alt="Fullscreen" class="icon-img">
+      </button>
+    </footer>
+
+    <div class="dark-side">
+      <div class="toggle dark" onclick="toggleSwitchDark(this)">
+        <div class="switch switch-dark off-dark"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Script Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.1/dist/howler.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="zenmode.js"></script>
+</body>
+</html>

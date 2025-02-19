@@ -1,0 +1,142 @@
+:root {
+  --orange: #c7bdb2;
+  --black: #000000;
+  --green: #222423;
+}
+
+body {
+  background: radial-gradient(circle, #000000 0%, #1a1a1a 70%, #0d0d0d 100%);
+  animation: backgroundPulse 10s infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  font-family: 'Futura', sans-serif;
+  overflow: hidden; /* Disable scrolling */
+  /* animation: backgroundAnimation 15s infinite; */
+}
+
+@keyframes backgroundPulse {
+  0% {
+      background: radial-gradient(circle, #000000 0%, #1a1a1a 70%, #0d0d0d 100%);
+  }
+  100% {
+      background: radial-gradient(circle, #0d0d0d 0%, #1a1a1a 70%, #000000 100%);
+  }
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease-out;
+}
+
+.container {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.text {
+  animation: textSlide 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes textSlide {
+  from {
+      transform: translate(-50%, -60%);
+      opacity: 0;
+  }
+  to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Center circle */
+.gr2 {
+  position: absolute;
+  width: 60vw; /* Responsive size for the circle */
+  height: 60vw; /* Maintain aspect ratio for the circle */
+  max-width: 600px; /* Limit the size on larger screens */
+  max-height: 600px;
+}
+
+@keyframes gradientAnimation {
+  0% { stop-color: #d4cdc6; }
+  50% { stop-color: #8d8e91; }
+  100% { stop-color: #666463; }
+}
+
+#gradient2 stop:first-child {
+  animation: gradientAnimation 5s infinite alternate;
+}
+
+/* Center text inside the circle */
+.text {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  font-size: 5vw; /* Responsive font size */
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: white;
+  transform: translate(-50%, -50%);
+  top: 45%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  animation: textColorShift 4s infinite alternate;
+}
+
+@keyframes textColorShift {
+  0% { color: #ffa3a3; }
+  50% { color: #ff9696; }
+  100% { color: #ff8a8a; }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .gr2 {
+      width: 80vw; /* Adjust circle size for tablets */
+      height: 80vw;
+  }
+
+  .text {
+      font-size: 7vw; /* Adjust text size for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .gr2 {
+      width: 90vw; /* Adjust circle size for mobile */
+      height: 90vw;
+  }
+
+  .text {
+      font-size: 9vw; /* Adjust text size for mobile */
+  }
+}

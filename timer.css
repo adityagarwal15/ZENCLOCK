@@ -1,0 +1,253 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+
+:root {
+    --dark: #1A1A1A;
+    --on-dark-shadow: inset 0 0 19px 0 rgb(0,0,0,1), 15px -20px 38px 0 rgb(102,210,51,0.24), inset 15px -20px 35px 0 rgb(0,0,0,0.25), -15px 15px 28px 0 rgb(0,0,0,0.72);
+    --on-dark: radial-gradient(circle at 60% 30%, #91D372, #35651E);
+    --off-dark-shadow: inset 0 0 37px 0 rgb(0,0,0,1), 15px -20px 38px 0 rgb(0,0,0,0.14), inset 15px -20px 35px 0 rgb(0,0,0,0.25), -15px 15px 28px 0 rgb(0,0,0,0.25);
+    --off-dark: radial-gradient(circle at 60% 30%, #343434, #484848);
+    --off-red-dark-shadow: inset 0 0 17px 0 rgb(0,0,0,1), 15px -20px 38px 0 rgb(146,59,59,0.14), inset 15px -20px 35px 0 rgb(0,0,0,0.25), -15px 15px 28px 0 rgb(0,0,0,0.25);
+    --off-red-dark: radial-gradient(circle at 60% 30%, #A63D3D, #6F2929);
+}
+
+
+
+.dark-side {
+    position: fixed; /* Keeps it fixed at the top right */
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Adjusted the gap for a slightly smaller button */
+}
+
+/* Toggle buttons */
+.toggle {
+    height: 80px;  /* Adjusted the height */
+    width: 160px;  /* Adjusted the width */
+    border-radius: 150px;
+    position: relative;
+    cursor: pointer;
+}
+
+.dark {
+    background-color: var(--dark);
+    box-shadow: inset 0 -5px 5px 0 rgb(0,0,0,0.5), inset 0 5px 5px 0 rgb(255,255,255,0.13), inset 23px -33px 28px 0 rgb(255,255,255,0.03), inset -25px 28px 23px 0 rgb(0,0,0,0.4), 0 -15px 30px 0 rgb(255,255,255,0.08), 0 25px 41px 0 rgb(0,0,0,0.4);
+}
+
+.toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Switches */
+.switch {
+    height: 60px;  /* Adjusted the height */
+    width: 60px;   /* Adjusted the width */
+    border-radius: 100px;
+    position: absolute;
+    transition: all ease 0.3s;
+    right: 10px;  /* Adjusted position */
+    animation: bounce-right 0.7s ease-out;
+}
+
+.switch-dark {
+    background: var(--on-dark);
+    box-shadow: var(--on-dark-shadow);
+}
+
+.switch.off-dark {
+    transform: translateX(-80px);  /* Adjusted to match smaller size */
+    transition: all ease 0.3s;
+    background: var(--off-dark);
+    box-shadow: var(--off-dark-shadow);
+    animation: bounce-left 0.7s ease-out;
+}
+
+/* animations */
+@keyframes bounce-left {
+    0% {transform: translateX(0px);}
+    25% {transform: translateX(-50px);}  
+    50% {transform: translateX(-80px);}  
+    70% {transform: translateX(-60px);}  
+    85% {transform: translateX(-75px);}  
+    100% {transform: translateX(-80px);} 
+}
+
+@keyframes bounce-right {
+    0% {transform: translateX(-100px);}
+    15% {transform: translateX(30px);}
+    30% {transform: translateX(0);}
+    45% {transform: translateX(10px);}
+    60% {transform: translateX(0);}
+    75% {transform: translateX(2px);}
+    100% {transform: translateX(0);}
+}
+
+
+#zenclock-page {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;  /* Align horizontally */
+    align-items: center;  /* Align vertically */
+    flex-direction: column; /* Stack elements (clock and quote) vertically */
+    text-align: center;
+}
+
+#zenclock-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#zenclock-text a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+#zenclock-text a:hover {
+    color: #cccccc;
+    text-decoration: underline;
+}
+
+#main-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+}
+
+#flipclock {
+    font-size: 12rem;
+    font-weight: bold;
+    letter-spacing: 0.5em;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+    max-width: 90vw;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+#quote {
+    font-size: 1rem;
+    font-style: italic;
+    color: #cccccc;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.5;
+    padding: 0 20px;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes items to opposite ends */
+}
+
+#spotify-icon {
+    width: 50px;
+    height: 50px;
+}
+
+#spotify-icon img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+#fullscreen-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#fullscreen-btn .icon-img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 600px) {
+    /* The whole layout should remain unchanged */
+    body {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .dark-side {
+        gap: 20px;  /* Adjusted gap for mobile */
+    }
+
+    .toggle {
+        height: 70px;  /* Slightly reduced height for smaller screens */
+        width: 140px;  /* Slightly reduced width for smaller screens */
+    }
+
+    .switch {
+        height: 50px;  /* Slightly reduced switch size */
+        width: 50px;   /* Slightly reduced switch size */
+    }
+}
+
+/* Adjustments for larger screens */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .dark-side {
+        gap: 30px;
+    }
+
+    .toggle {
+        height: 80px;
+        width: 160px;
+    }
+
+    .switch {
+        height: 60px;
+        width: 60px;
+    }
+}

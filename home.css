@@ -1,0 +1,378 @@
+body {
+  /* background: radial-gradient(circle, #000000 0%, #1a1a1a 100%); */
+  background: radial-gradient(circle, #000000 0%, #1a1a1a 70%, #0d0d0d 100%);
+  color: #f0f0f0;
+  font-family: "PP rader";
+  /* font-family: 'Modern Wakandan', sans-serif; */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%; /* smoother corners */
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.1); /* light grey with transparency */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease-out; /* smooth scaling */
+}
+
+/* Top Navigation Bar */
+.top-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 10;
+}
+
+.zenclock {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: clamp(1.5rem, 2vw, 2rem); /* Responsive typography */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.zenclock:hover {
+  color: #d6d3d3; /* Subtle cyan glow */
+  text-shadow: 0 0 8px rgba(175, 181, 182, 0.6);
+}
+
+.zenmode-btn {
+  display: flex;
+  padding: 1.0rem 2.1rem 1.0rem 3.0rem;
+  border-radius: 99rem;
+  background-color: rgba(152, 152, 152, 0.747);
+  transition: all 0.5s ease;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border: none;
+  font-size: 18px;
+}
+
+.zenmode-btn:hover {
+  animation: gradientShift 2s infinite;
+}
+
+@keyframes gradientShift {
+  0% { background: #6b6b6b; }
+  50% { background: #484848; }
+  100% { background: #505050; }
+}
+
+.zenmode-btn .icon {
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zenmode-btn .icon .span {
+  background: black;
+  border-radius: 100%;
+  padding: 0rem;
+  width: 0rem;
+  height: 0rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-180deg);
+  transition: all 0.5s ease;
+
+}
+
+.zenmode-btn:hover .icon .span {
+  transform: rotate(0deg);
+  border-radius: 100%;
+  padding: 0.6rem;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Reduced space for a tighter layout */
+  position: absolute; /* Position it centrally */
+  top: 50%; /* Vertically center */
+  transform: translateY(-50%); /* Correct centering */
+}
+
+.chronicle-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1.7rem 2.9rem; /* Slightly reduced padding for a cleaner look */
+  margin: 0 1rem; /* Added subtle margin between buttons */
+  border: none;
+  border-radius: 38px; /* Slightly smaller border radius for a sharper look */
+  background: linear-gradient(145deg, #3a3a3a, #2e2e2e); /* Darker, more subtle gradient */
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  overflow: hidden;
+  backdrop-filter: blur(15px); /* Subtle glassmorphism effect */
+  -webkit-backdrop-filter: blur(15px);
+  background: transparent;
+}
+
+.chronicle-button {
+  background: linear-gradient(145deg, #2e2e2e, #3c3c3c);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.chronicle-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  filter: blur(8px);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.chronicle-button:hover {
+  background: linear-gradient(145deg, #505050, #3a3a3a); /* Slightly darker on hover */
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(161, 162, 164, 0.75), inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.chronicle-button:hover:before {
+  background: rgba(255, 255, 255, 0.1);
+  filter: blur(12px);
+}
+
+.chronicle-button:hover span:nth-of-type(1) em {
+  opacity: 0;
+  transform: rotateX(90deg) scaleX(0.9) translate3d(0, -10px, 0);
+  transition: opacity 0.2s ease-out, transform 0.5s ease-in-out;
+}
+
+.chronicle-button:hover span:nth-of-type(2) em {
+  opacity: 1;
+  transform: rotateX(0deg) scaleX(1) translateZ(0);
+  transition: opacity 0.2s ease-in, transform 0.5s ease-in-out;
+}
+
+.chronicle-button::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  filter: blur(16px);
+  transition: opacity 0.5s ease;
+}
+
+.chronicle-button:hover::after {
+  opacity: 0.3;
+  animation: borderGlow 1.5s ease-out infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1), 0 0 16px rgba(200, 200, 200, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.2), 0 0 32px rgba(200, 200, 200, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1), 0 0 16px rgba(200, 200, 200, 0.25);
+  }
+}
+
+.chronicle-button:active {
+  transform: scale(0.97); /* Slightly more subtle press effect */
+  background: linear-gradient(145deg, #2e2e2e, #3a3a3a); /* Slightly darker on active */
+}
+
+.chronicle-button:focus {
+  transform: scale(1.02); /* Small increase on focus */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.chronicle-button:active span:nth-of-type(2) em {
+  transform: rotateX(90deg) scaleX(1) translate3d(0, -10px, 0);
+  transition: opacity 0.2s ease-out, transform 0.5s ease-in-out;
+}
+
+
+span {
+  position: relative;
+  display: block;
+  perspective: 100px;
+}
+
+span:nth-of-type(2) {
+  position: absolute;
+}
+
+em {
+  font-style: normal;
+  display: inline-block;
+  font-size: 0.9rem; /* Slightly smaller text for elegance */
+  color: #d1d1d1; /* Subtle light gray text */
+  font-weight: 500; /* Subtle weight for modern feel */
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out, letter-spacing 0.3s ease-in-out;
+  letter-spacing: 0.6px; /* Tighter letter spacing for sophistication */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.05), 0 0 10px rgba(240, 240, 240, 0.1); /* Soft, subtle glow */
+}
+
+span:nth-of-type(1) em {
+  transform-origin: top;
+}
+
+span:nth-of-type(2) em {
+  opacity: 0;
+  transform: rotateX(-90deg) scaleX(0.9) translate3d(0, 10px, 0);
+  transform-origin: bottom;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1), 0 0 24px rgba(200, 200, 200, 0.25);
+    background: linear-gradient(145deg, #3a3a3a, #505050);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.15), 0 0 48px rgba(200, 200, 200, 0.4);
+    background: linear-gradient(145deg, #2e2e2e, #3a3a3a);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1), 0 0 24px rgba(200, 200, 200, 0.25);
+    background: linear-gradient(145deg, #3a3a3a, #505050);
+  }
+}
+
+
+.spacer {
+  flex-grow: 1; /* This will push the marquee section to the bottom */
+}
+
+.marquee {
+  position: relative;
+  color: #eee;
+  padding: 30px 0;
+  font-weight: 600;
+  font-size: 40px;
+  text-transform: uppercase;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.marquee__inner {
+  display: flex;
+  width: fit-content;
+  flex: auto;
+  flex-direction: row;
+}
+
+.marquee__part {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.marquee__part {
+  background: linear-gradient(90deg, #d4cdd0, #968c8f, #4c4648);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.arrow {
+  width: 60px;
+  height: 60px; /* Adjusted size */
+  margin: 0 10px; /* Adjusted to position arrow between text */
+  transform: rotate(0deg); /* Arrow initially pointing to the right */
+  transition: transform 0.5s ease-in-out; /* Shortened transition time */
+}
+
+.arrow img {
+  width: 100%;
+  height: auto;
+}
+
+.arrow.active {
+  transform: rotate(180deg); /* Arrow will point left when active */
+  transition: transform 0.5s ease-in-out; /* Shortened transition time */
+}
+
+@media screen and (max-width: 768px) {
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    gap: 20px; /* Reduced gap for tighter layout */
+    top: auto; /* Reset absolute position */
+    transform: none; /* Reset vertical transform */
+  }
+
+  .chronicle-button {
+    padding: 1rem 2rem; /* Adjust padding for smaller screens */
+    font-size: 1rem; /* Adjust font size for better fit */
+  }
+
+  .marquee {
+    font-size: 32px; /* Smaller font size for marquee text */
+  }
+
+  .top-bar {
+    flex-direction: row;
+    padding: 10px;
+  }
+  .button-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .chronicle-button {
+    width: 90%; /* Full width for smaller screens */
+    padding: 1.2rem 2.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .chronicle-button {
+    padding: 0.8rem 1.5rem; /* Further reduce padding on very small screens */
+  }
+
+  .marquee {
+    font-size: 24px; /* Reduce font size for small devices */
+  }
+
+  .zenmode-btn{
+    padding: 0.5rem 1.1rem 0.5rem 2.0rem;
+  }
+}
+
+
+
